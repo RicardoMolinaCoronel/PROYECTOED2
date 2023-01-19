@@ -8,6 +8,8 @@ package TDAS;
  *
  * @author USER1
  */
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.TilePane;
 public class TreeNode<E> {
     
     private E content;
