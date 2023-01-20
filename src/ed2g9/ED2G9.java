@@ -8,6 +8,7 @@ import java.util.Iterator;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -44,25 +45,30 @@ public class ED2G9 extends Application {
     @Override
     public void start(Stage stage) {
         PanelPrincipal();
+        
+        
     }
     public void PanelPrincipal(){
         Stage stage= new Stage();
+        stage.setTitle("Tree Maping");
         Label lb= new Label("Elija la carpeta a representar");
-        lb.setTextFill(Color.web("#3498db"));
-        lb.setFont(new Font("Arial Black",18));
+        lb.setTextFill(Color.web("#FFFFFF"));
+        lb.setFont(new Font("Times New Roman",18));
         Button bt= new Button("Navegar");
-        bt.setStyle("-fx-font-size: 25px; -fx-font-weight: bold; -fx-padding: 20px 25px;-fx-background-color: #9b59b6;"/*+"-fx-border-color: #ED4C67"*/);
+        bt.setFont(new Font("Times New Roman",18));
+        bt.setStyle("-fx-font-size: 25px; -fx-font-weight: bold; -fx-padding: 20px 25px;-fx-background-color: #000000"/*+"-fx-border-color: #ED4C67"*/);
         bt.setTextFill(Color.web("#ffffff"));
         
-        //aviso.setTextFill(Color.web("#e74c3c"));
+        //A
         Label aviso= new Label();
         aviso.setTextFill(Color.web("#e74c3c"));
-        aviso.setFont(new Font("Arial Black",18));
+        aviso.setFont(new Font("Times New Roman",18));
         aviso.setVisible(false);
         VBox vb= new VBox(lb,aviso,bt);
         vb.setAlignment(Pos.CENTER);
         vb.setSpacing(40);
-        vb.setStyle("-fx-background-color: #bdc3c7;");
+        vb.setStyle("-fx-background-color: #FF0000");
+        
         bt.setOnAction(new EventHandler<ActionEvent>(){
              @Override
              public void handle(ActionEvent event) {
@@ -74,6 +80,7 @@ public class ED2G9 extends Application {
                  }
                  else{
                      aviso.setText("No a escogido ningun directorio a examinar");
+                     aviso.setTextFill(Color.web("#FFFFFF"));
                      aviso.setVisible(true);
                  }
              }
@@ -82,7 +89,7 @@ public class ED2G9 extends Application {
         stage.setScene(scene);
         stage.show();
     }
-    public void PanelUsuario(){
+   /* public void PanelUsuario(){
          Stage stage= new Stage();
         GridPane grid= new GridPane();
         Label nombre= new Label("Usuario: ");
@@ -138,7 +145,7 @@ public class ED2G9 extends Application {
                      mensaje.setVisible(true);
                      }
                  }*/
-             }
+           /*  }
         });
         registrar.setOnAction(new EventHandler<ActionEvent>(){
              @Override
@@ -162,15 +169,15 @@ public class ED2G9 extends Application {
                          mensaje.setText("Este usuario ya a sido creado");
                      mensaje.setVisible(true);
                      }
-                 }*/
+                 }
              }
-         });
+       /*  });
         Scene scene= new Scene(st,900,506);
        
         stage.setScene(scene);
         stage.setTitle("Bienvenid@");
         stage.show();
-    }
+    }*/
     public void CrearCarpeta(){
          Label lb= new Label("Elija la direccion de la carpeta a crear");
          Button bt= new Button("Navegar");
@@ -237,8 +244,8 @@ public class ED2G9 extends Application {
     }
     public void RepesentacionGrafica(File carpeta){
         Stage stage= new Stage();
+        stage.setTitle("Tree Maping");
         HBox flow = new HBox();
-        //flow.setPadding(new Insets(400, 400, 400, 400));
         flow.setPrefSize(850, 850);
         flow.setAlignment(Pos.TOP_CENTER);
         Tree<File> file=crearArbol(carpeta.getAbsolutePath());
@@ -248,16 +255,20 @@ public class ED2G9 extends Application {
         dispersarDimensiones(file);
         Label lb= new Label("Click en la carpeta que desee examinar"+"\n"+file.getRaiz().getContent().getName()+": "+conversor(file.getRaiz().getPeso()));
         ArchivoMasPesado(file.getRaiz().getContent(),lb);
-        lb.setFont(new Font("Arial Black",18));
+        lb.setFont(new Font("Times New Roman",18));
         VBox vb= new VBox(lb,flow);
         vb.setAlignment(Pos.CENTER);
         vb.setSpacing(20);
-        flow.setStyle("-fx-background-color: #686de0" + ";"+"-fx-border-insets: 1 1 1 1;"+"-fx-border-color:#2f3640;");
+       // Image img= new Image("/Image/fondo.jpg");
+        //ImageView img1= new ImageView(img);
+        
+        //("/Image/fondo.jpg");
+        flow.setStyle("-fx-background-color: #03FF4C" + ";"+"-fx-border-insets: 1 1 1 1;"+"-fx-border-color:#FF0000 ");
 
         ScrollPane scroll=new ScrollPane(vb);
         
         
-            Scene scene = new Scene(scroll, 850, 850);
+            Scene scene = new Scene(scroll, 1000, 700);
         
         stage.setScene(scene);
         stage.show();
@@ -275,7 +286,7 @@ public class ED2G9 extends Application {
             if (hijo.getRaiz().getContent().isDirectory()) { 
                 FlowPane pane = new FlowPane();
                 Label lb= new Label(hijo.getRaiz().getContent().getName()+"\nPeso:"+conversor(hijo.getRaiz().getPeso()));
-                lb.setFont(new Font("Arial",18));
+                lb.setFont(new Font("Times New Roman",18));
                 pane.getChildren().add(lb);
 //                Rectangle rect= new Rectangle(ancho/cantidad,alto/cantidad);
 //                pane.getChildren().add(rect);
@@ -296,16 +307,16 @@ public class ED2G9 extends Application {
                 pane.setOnMouseEntered(new EventHandler <MouseEvent>(){
                     @Override
                     public void handle(MouseEvent event) {
-                        System.out.println("Hola dice : "+hijo.getRaiz().getContent().getName()+" con size: "+pane.getWidth()+", "+pane.getHeight());
+                        System.out.println("Abriendo : "+hijo.getRaiz().getContent().getName()+" con size: "+pane.getWidth()+", "+pane.getHeight());
                        pane.setPrefSize(pane.getWidth()+40, pane.getHeight()+40);
                        contador=1;
-                       pane.setStyle("-fx-background-color: " + color + ";"+"-fx-border-insets: 2 2 2 2;"+"-fx-border-color:#2f3640;");
+                       pane.setStyle("-fx-background-color: " + color + ";"+"-fx-border-insets: 2 2 2 2;"+"-fx-border-color:#FFFFFF ");
                     }
                 });
                 pane.setOnMouseExited(new EventHandler <MouseEvent>(){
                     @Override
                     public void handle(MouseEvent event) {
-                        System.out.println("ADIOS dice : "+hijo.getRaiz().getContent().getName()+" con size: "+pane.getWidth()+", "+pane.getHeight());
+                        System.out.println("Cerrando : "+hijo.getRaiz().getContent().getName()+" con size: "+pane.getWidth()+", "+pane.getHeight());
                        pane.setPrefSize(ancho/(cantidad), alto/(cantidad));
                        contador=1;
                        pane.setStyle("-fx-background-color: " + color + ";"+"-fx-border-insets: 1 1 1 1;"+"-fx-border-color:#2f3640;");
@@ -331,7 +342,7 @@ public class ED2G9 extends Application {
                 //pane.maxHeight(alto/cantidad);
                 
                 pane.setStyle("-fx-background-color: " + color + ";"+"-fx-border-insets: 1 1 1 1;"+"-fx-border-color:#2f3640;");
-                //pane.setStyle("-fx-background-color: #f5f6fa" + ";"+"-fx-border-insets: 1 1 1 1;"+"-fx-border-color:#2f3640;");
+               
                 pane.setVgap(20);
                 pane.setHgap(20);
                 hijo.getRaiz().setHeight(alto / cantidad);

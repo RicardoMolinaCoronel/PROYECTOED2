@@ -11,7 +11,7 @@ import java.util.Iterator;
  *
  * @author César
  */
-public class LinkedList<E> implements Serializable{//List
+public class LinkedList<E> implements Serializable,List<E>{//List
      private Node<E> first, last;
     private int efectivo;
     
@@ -20,7 +20,7 @@ public class LinkedList<E> implements Serializable{//List
         efectivo = 0;
     }
     
-    //@Override
+    @Override
     public boolean addFirst(E element) {
         Node<E> nodo = new Node<>(element);
         if(element == null)
@@ -35,7 +35,7 @@ public class LinkedList<E> implements Serializable{//List
         return true;
     }
 
-   // @Override
+    @Override
     public boolean addLast(E element) {
         Node<E> nodo = new Node<>(element);
         if(element == null)
@@ -51,17 +51,17 @@ public class LinkedList<E> implements Serializable{//List
         return true;
     }
 
-    //@Override
+    @Override
     public E getFirst() {
         return first.getContent();
     }
 
-    //@Override
+    @Override
     public E getLast() {
         return last.getContent();
     }
 
-    //@Override
+    @Override
     public boolean removeFirst() {
         if(isEmpty())
             return false;
@@ -77,7 +77,7 @@ public class LinkedList<E> implements Serializable{//List
     }
     
     
-    //@Override
+    @Override
     public boolean removeLast(){
         if(this.isEmpty()) 
             return false;
@@ -110,12 +110,12 @@ public class LinkedList<E> implements Serializable{//List
         return null;
     }
     
-    //@Override
+    @Override
     public boolean isEmpty() {
         return (first == null && last == null);
     }
 
-    //@Override
+    @Override
     public boolean contains(E element) {
         if(element == null || isEmpty()){
             return false;
@@ -127,7 +127,7 @@ public class LinkedList<E> implements Serializable{//List
         return false;
     }
 
-    //@Override
+    @Override
     public boolean insert(int index, E element) {
         if(element == null || index < 0 || index >= efectivo) {
             return false;
@@ -155,7 +155,7 @@ public class LinkedList<E> implements Serializable{//List
         return false;
     }
 
-    //@Override
+    @Override
     public E get(int index) {
         if(index < 0 || index >= efectivo)
             return null;
@@ -168,7 +168,7 @@ public class LinkedList<E> implements Serializable{//List
         return null;
     }
 
-    //@Override
+    @Override
     public int indexOf(E element) {
         if(element == null)
             return -1;
@@ -182,7 +182,7 @@ public class LinkedList<E> implements Serializable{//List
         return -1;
     }
 
-    //@Override
+    @Override
     public E remove(int index) {
         if(index < 0 || index >= efectivo){
             return null;
@@ -209,7 +209,7 @@ public class LinkedList<E> implements Serializable{//List
         
     }
 
-    //@Override
+    @Override
     public boolean remove(E element) {
         if(element == null) {
             return false;
@@ -233,7 +233,7 @@ public class LinkedList<E> implements Serializable{//List
         return false;
     }
 
-    //@Override
+    @Override
     public E set(int index, E element) {
         if (element == null || index < 0 || index >= efectivo){
             return null;
@@ -250,7 +250,7 @@ public class LinkedList<E> implements Serializable{//List
         return null;
     }
 
-    //@Override
+    @Override
     public int size() {
         return efectivo;
     }
