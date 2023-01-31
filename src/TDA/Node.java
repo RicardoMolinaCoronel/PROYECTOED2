@@ -1,26 +1,22 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package TDAS;
-
-/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package TDA;
 
+import java.io.Serializable;
 
 /**
  *
- * @author User
+ * @author Tago
  */
-public class Node <E> {
+public class Node<E> implements Serializable{
     private E content;
     private Node<E> next;
-
-    public Node(E content) {
-        this.content = content;
+    
+    public Node(E data){
+        this.content = data;
         this.next = null;
     }
 
@@ -28,8 +24,8 @@ public class Node <E> {
         return content;
     }
 
-    public void setContent(E content) {
-        this.content = content;
+    public void setContent(E data) {
+        this.content = data;
     }
 
     public Node<E> getNext() {
@@ -38,10 +34,5 @@ public class Node <E> {
 
     public void setNext(Node<E> next) {
         this.next = next;
-    }
-    
-    
-    
-    
-    
+    } 
 }

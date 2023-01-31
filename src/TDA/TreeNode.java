@@ -1,17 +1,19 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
-package TDAS;
+package TDA;
+
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.TilePane;
 
 /**
  *
- * @author USER1
+ * @author Tago
  */
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.TilePane;
 public class TreeNode<E> {
-     private E content;
+    private E content;
     private LinkedList<Tree<E>> hijos;
     private double peso;
     private double width;
