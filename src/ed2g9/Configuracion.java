@@ -4,6 +4,7 @@
  */
 package ed2g9;
 
+import TDAS.Tree;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -20,11 +21,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.StageStyle;
 
 /**
@@ -51,6 +55,7 @@ public class Configuracion implements Serializable {
     private void createContentLeft(){
         VBox vBox = new VBox(5);
         Label lblExtensiones = new Label("Extensiones:");
+        lblExtensiones.setFont(new Font("Times New Roman",15));
         listView = new ListView<>();
         
         actualizarListView();
@@ -73,12 +78,23 @@ public class Configuracion implements Serializable {
     private void createContentRight(){
         VBox vBox = new VBox(5);
         Label lblColor = new Label("Color:");
+        lblColor.setFont(new Font("Times New Roman",15));
         colorPicker = new ColorPicker();
         
         HBox hBox = new HBox();
         Button btnEliminar = new Button("Eliminar");
+        btnEliminar.setFont(new Font("Times New Roman",10));
+        btnEliminar.setStyle("-fx-font-size: 10px; -fx-font-weight: bold; -fx-padding: 10px 15px;-fx-background-color: #000000"/*+"-fx-border-color: #ED4C67"*/);
+        btnEliminar.setTextFill(Color.web("#ffffff"));
         Button btnAgregar = new Button("Agregar");
+        btnAgregar.setFont(new Font("Times New Roman",10));
+       btnAgregar.setStyle("-fx-font-size: 10px; -fx-font-weight: bold; -fx-padding: 10px 15px;-fx-background-color: #000000"/*+"-fx-border-color: #ED4C67"*/);
+        btnAgregar.setTextFill(Color.web("#ffffff"));
         Button btnGuardar = new Button("Guardar cambios");
+        btnGuardar.setFont(new Font("Times New Roman",10));
+        btnGuardar.setStyle("-fx-font-size: 10px; -fx-font-weight: bold; -fx-padding: 10px 15px;-fx-background-color: #000000"/*+"-fx-border-color: #ED4C67"*/);
+        btnGuardar.setTextFill(Color.web("#ffffff"));
+       TextField extensionSolo=new TextField("");
         hBox.getChildren().addAll(btnEliminar,btnAgregar,btnGuardar);
         
         colorPicker.setOnAction(e->{
@@ -124,16 +140,27 @@ public class Configuracion implements Serializable {
             }
         
         });
-        
+          Label lblArchivo = new Label("Extensión");
+        lblArchivo.setFont(new Font("Times New Roman",13));
+        RadioButton seleccionado=new RadioButton("Mostrar solo este tipo de archivo");
+        seleccionado.setFont(new Font("Times New Roman",13));
+        seleccionado.setSelected(false);
         
         btnGuardar.setOnAction(e->{
            serializar();
            actualizarListView();
+           if(seleccionado.isSelected()){
+               Tree.setRestringido(true);
+               Tree.setExtensionRestringida(extensionSolo.getText());
+           }else{
+               Tree.setRestringido(true);
+               Tree.setExtensionRestringida("");
+           }
         
         });
+      
         
-        
-        vBox.getChildren().addAll(lblColor,colorPicker,hBox);
+        vBox.getChildren().addAll(lblColor,colorPicker,hBox,lblArchivo,extensionSolo,seleccionado);
         root.setRight(vBox);
         
         

@@ -63,10 +63,10 @@ public class PanelP {
      public void PanelPrincipal(){
          
         //Stage stage= new Stage();
-        Label lb= new Label("Elija la carpeta a representar");
+        Label lb= new Label("Escoja el directorio a representar");
         lb.setTextFill(Color.web("#3498db"));
         lb.setFont(new Font("Arial Black",18));
-        Button bt= new Button("Navegar");
+        Button bt= new Button("Buscar");
         Button bt2 = new Button("Configuración");
         bt.setStyle("-fx-font-size: 25px; -fx-font-weight: bold; -fx-padding: 20px 25px;-fx-background-color: #9b59b6;"/*+"-fx-border-color: #ED4C67"*/);
         bt.setTextFill(Color.web("#ffffff"));
@@ -126,7 +126,7 @@ public class PanelP {
                      
                  }
                  else{
-                     aviso.setText("No a escogido ningun directorio a examinar");
+                     aviso.setText("No se ha escogido ningun directorio");
                      aviso.setVisible(true);
                  }
              }

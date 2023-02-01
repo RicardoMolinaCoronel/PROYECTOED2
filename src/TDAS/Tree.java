@@ -27,7 +27,25 @@ import java.util.Iterator;
 public class Tree<E> {
 
     private TreeNode<E> raiz;
+    private static boolean restringido;
+    private static String extensionRestringida;
 
+    public static boolean isRestringido() {
+        return restringido;
+    }
+
+    public static void setRestringido(boolean restringido) {
+        Tree.restringido = restringido;
+    }
+
+    public static String getExtensionRestringida() {
+        return extensionRestringida;
+    }
+
+    public static void setExtensionRestringida(String extensionRestringida) {
+        Tree.extensionRestringida = extensionRestringida;
+    }
+    
     public Tree() {
         raiz = new TreeNode();
     }
@@ -137,15 +155,32 @@ public class Tree<E> {
                     build(t2);
                 }
                 else{
+                    
                     Archivo ar=new Archivo(file,file.length());
+                    
                     t2=new Tree(ar);
                 }
+                
+                if(restringido){
+                    if(file.getName().endsWith(extensionRestringida) || file.isDirectory()){
                 tree.getRaiz().getContent().setSize(tree.getRaiz().getContent().getSize()+t2.getRaiz().getContent().getSize());
                 tree.getRaiz().getHijos().addLast(t2);
+                    }
+                }else{
+                    tree.getRaiz().getContent().setSize(tree.getRaiz().getContent().getSize()+t2.getRaiz().getContent().getSize());
+                tree.getRaiz().getHijos().addLast(t2);
+                }
             }
         }
         else{
+              if(restringido){
+                    if(tree.getRaiz().getContent().getArchivo().getName().endsWith(extensionRestringida)){
            tree.getRaiz().getContent().setSize(tree.getRaiz().getContent().getArchivo().length());
+                    }
+              }else{
+                         tree.getRaiz().getContent().setSize(tree.getRaiz().getContent().getArchivo().length());
+                    }
+           
         }
     }
 
