@@ -127,6 +127,7 @@ public class PanelP {
                  }
                  else{
                      aviso.setText("No se ha escogido ningun directorio");
+                     aviso.setTextFill(Color.web("#ffffff"));
                      aviso.setVisible(true);
                  }
              }
