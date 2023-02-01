@@ -45,7 +45,6 @@ public class Tree<E> {
     public static void setExtensionRestringida(String extensionRestringida) {
         Tree.extensionRestringida = extensionRestringida;
     }
-    
     public Tree() {
         raiz = new TreeNode();
     }
