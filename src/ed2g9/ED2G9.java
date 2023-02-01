@@ -45,7 +45,7 @@ public class ED2G9 extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
        PanelP prueba = new PanelP();
-       Scene scene = new Scene(prueba.getRoot(),500,180);
+       Scene scene = new Scene(prueba.getRoot(),1365,729);
        primaryStage.setTitle("Tree Maping");
         primaryStage.setScene(scene);
         primaryStage.show();
